@@ -6,7 +6,7 @@ class IdRange
 		@end = Integer(splitup[1])
 	end
 
-	def isInvalidComplex(num)
+	def isComplexInvalid(num)
 		str_rep = num.to_s
 		pattern = ""
 	  str_rep.each_char do |c|
@@ -31,15 +31,21 @@ class IdRange
 		(@start..@end).each {|n| invalids.push(n) if isInvalid(n)}
 		return invalids.sum
 	end
+
+	def complexInvalidSum
+		invalids = []
+		(@start..@end).each {|n| invalids.push(n) if isComplexInvalid(n)}
+		return invalids.sum
+	end
+		
 end
 
 	
 input=gets
 
-sum = 0
-input.split(',').each {|s| 
-	invalid_s = IdRange.new(s).invalidSum
-	sum += invalid_s
-	}
+sum = (input.split(',').map { |s| IdRange.new(s).invalidSum}).sum
+complex_sum = (input.split(',').map{ |s| IdRange.new(s).complexInvalidSum}).sum
+
 puts sum
+puts complex_sum
 

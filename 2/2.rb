@@ -1,7 +1,7 @@
 
 class IdRange
   def initialize(string_input)
-	  splitup = string_input.split('-')
+		splitup = string_input.split('-')
 		@start = Integer(splitup[0])
 		@end = Integer(splitup[1])
 	end
@@ -9,7 +9,7 @@ class IdRange
 	def isComplexInvalid(num)
 		str_rep = num.to_s
 		pattern = ""
-	  str_rep.each_char do |c|
+		str_rep.each_char do |c|
 			pattern.concat(c)
 			if pattern.size*2 > str_rep.size
 				return false
@@ -21,7 +21,7 @@ class IdRange
 	end
 
 	def isInvalid(num)
-	  str_rep = num.to_s
+		str_rep = num.to_s
 		first_half = str_rep.slice(0, str_rep.size/2)
 		return first_half.concat(first_half) == str_rep
 	end
